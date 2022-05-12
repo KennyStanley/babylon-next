@@ -20,17 +20,17 @@
     "delete": "rimraf"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "5.11.0",
-    "@testing-library/react": "10.4.3",
-    "babel-jest": "26.1.0",
+    "@testing-library/jest-dom": "5.16.4",
+    "@testing-library/react": "13.2.0",
+    "babel-jest": "28.1.0",
     "babel-plugin-import-graphql": "2.8.1",
     "babel-plugin-lodash": "3.3.4",
-    "concurrently": "5.2.0",
+    "concurrently": "7.1.0",
     "identity-obj-proxy": "3.0.0",
-    "jest": "26.1.0",
+    "jest": "28.1.0",
     "jest-transform-graphql": "2.1.0",
-    "madge": "3.9.2",
-    "react-test-renderer": "16.13.1",
+    "madge": "5.0.1",
+    "react-test-renderer": "18.1.0",
     "rimraf": "3.0.2"
   }
 }
