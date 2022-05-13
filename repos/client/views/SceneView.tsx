@@ -75,4 +75,4 @@ export default class SceneView extends PureComponent {
     }
 }
 
-const style = { width: '100%', height: '100%' }
+const style = { width: '100vw', height: '100vh' }
