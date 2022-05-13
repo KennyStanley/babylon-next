@@ -1,4 +1,6 @@
 import React, { PureComponent } from 'react'
+import Head from 'next/head'
+import Script from 'next/script'
 import {
     ArcRotateCamera,
     MeshBuilder,
@@ -9,18 +11,24 @@ import {
     Texture,
     Vector3,
 } from '../babylon'
-import Head from 'next/head'
+
+type EngineType = Engine & {
+    renderLoop: () => void
+}
 
 /**
  * Babylon 3D Scene View
  */
 export default class SceneView extends PureComponent {
+    private canvas: HTMLCanvasElement | undefined
+    id = 'Babylon'
+
     componentDidMount() {
-        this.setup(this.canvas)
+        if (this.canvas) this.setup(this.canvas)
     }
 
-    setup = canvas => {
-        const engine = this.createEngine(canvas)
+    setup = (canvas: HTMLCanvasElement) => {
+        const engine = this.createEngine(canvas) as EngineType
         const scene = new Scene(engine)
         const camera = new ArcRotateCamera(
             'Camera',
@@ -41,13 +49,13 @@ export default class SceneView extends PureComponent {
         const texture = new Texture(`/images/grid.png`, scene)
         const mat = new StandardMaterial('Material', scene)
         mat.diffuseTexture = texture
-        const box = new MeshBuilder.CreateBox('box', { size: 1 }, scene)
+        const box = MeshBuilder.CreateBox('box', { size: 1 }, scene)
         box.material = mat
         engine.runRenderLoop(engine.renderLoop)
     }
 
-    createEngine = canvas => {
-        const engine = new Engine(canvas)
+    createEngine = (canvas: HTMLCanvasElement) => {
+        const engine = new Engine(canvas) as EngineType
         engine.renderLoop = () =>
             engine.scenes.forEach(scene => {
                 if (scene.activeCamera) scene.render()
@@ -55,19 +63,13 @@ export default class SceneView extends PureComponent {
         return engine
     }
 
-    id = 'Babylon'
-
-    onMount = canvas => (this.canvas = canvas)
+    onMount = (canvas: HTMLCanvasElement) => (this.canvas = canvas)
 
     render() {
         // noinspection HtmlUnknownAttribute,HtmlRequiredTitleElement,JSUnresolvedLibraryURL
         return (
             <>
-                <Head
-                    children={
-                        <script src="https://code.jquery.com/pep/0.4.3/pep.min.js" />
-                    }
-                />
+                <Script src="https://code.jquery.com/pep/0.4.3/pep.min.js" />
                 <canvas id={this.id} ref={this.onMount} style={style} />
             </>
         )

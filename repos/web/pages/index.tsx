@@ -7,7 +7,7 @@ const SceneView = dynamic(() => import(`../../client/views/SceneView`), {
     ssr: false,
 })
 
-export default function HomePage(props) {
+export default function HomePage(props: JSX.IntrinsicAttributes) {
     const [loaded, setLoaded] = useState(false)
     useEffect(() => setLoaded(true))
     return (
