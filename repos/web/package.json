@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "ANALYZE=true next build",
+    "build": "cross-env ANALYZE=true next build",
     "dev": "yarn cache clean && yarn delete .next && next dev",
     "delete": "rimraf",
     "start": "next start",
@@ -13,6 +13,7 @@
     "autoprefixer": "^10.4.7",
     "client": "*",
     "core": "*",
+    "cross-env": "^7.0.3",
     "next": "12.1.6",
     "postcss": "^8.4.13",
     "tailwindcss": "^3.0.24"
