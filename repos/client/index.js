@@ -5,10 +5,9 @@ import * as core from 'core' // init core first
  * Modules' Exposing API - to enable consistent and maintainable app integration
  * =============================================================================
  */
-const sideEffects = {core} // prevent webpack tree shaking in prod
+const sideEffects = { core } // prevent webpack tree shaking in prod
 
 /* Activated Modules */
-const clientModules = [
-]
+const clientModules = []
 
 export default clientModules

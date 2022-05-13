@@ -7,7 +7,6 @@ export * from './constants'
  */
 
 /* Activated Modules */
-const coreModules = [
-]
+const coreModules = []
 
 export default coreModules
