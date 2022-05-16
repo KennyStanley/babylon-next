@@ -59,6 +59,9 @@ export default class SceneView extends PureComponent {
             engine.scenes.forEach(scene => {
                 if (scene.activeCamera) scene.render()
             })
+        if (window) {
+            window.addEventListener('resize', () => engine.resize())
+        }
         return engine
     }
 
