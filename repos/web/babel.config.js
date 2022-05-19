@@ -18,9 +18,9 @@ module.exports = (api) => {
     presets: [
       'next/babel'
     ],
-    ignore: [
-      // this duplicated declaration from next.config.js produces slightly smaller bundle
-      new RegExp(`node_modules/(?!(${modulesToTranspile.join('|')})/)`)
-    ],
+    // ignore: [
+    //   // this duplicated declaration from next.config.js produces slightly smaller bundle
+    //   new RegExp(`node_modules/(?!(${modulesToTranspile.join('|')})/)`)
+    // ],
   }
 }
